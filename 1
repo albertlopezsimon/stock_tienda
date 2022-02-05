@@ -1,0 +1,40 @@
+#include <stdio.h>      //cabecera: marca las librerias que incluyo*/
+#include <stdlib.h>
+
+int main ()                 //en C comenzamos con la funcion Main//
+{
+    const float PUNTOSxEURO = 0.25;         //defino constante: float, porque será decimal//
+    int producto, producto_max,n;           //defino variables: int, porque serán numeros enteros//
+    float precio, precio_max, total, media; // estan float, porque serán numeros decimales//
+
+    total = 0.0;                            //Asigno valores a las variables//
+    media = 0.0;
+    precio_max = 0.0;
+    producto_max = 0;
+    printf("Selecciona codigo producto: "); //asigno mennsaje (selecciona codigo producto) antes del while, para tener acceso en todo el codigo//
+    scanf("%d", &producto);                 //asigno Producto a leerEntero, antes de while//
+    n = 0;                                  // asigno a n, el valor inicial de 0, para crear bucle//
+
+    while (producto>0)                      // creamos mientras y el bucle, producto mayor a 0. De esta manera, cuando ppongamos en 0 en numero producto, se cerrara el bucle y dará resulatados//
+    {
+            printf("Precio producto: ");    //que aparezca en pantalla el mensaje: Precio producto//
+            scanf("%f", &precio);           // asigno a precio, leer float//
+            total = total + precio;         //le decimos que total, que incializamos en 0.0, pasa a ser 0.0 más el valor del producto que pasa por el bucle// 
+            if (precio > precio_max)        //creo una condición dentro del mientras para aumentar el valor del precio maximo del producto//
+            {
+                precio_max = precio;        //si se cumple la condición, precio de ese producto, pasa a ser valor de precio maximo//
+                producto_max = producto;    //así mismo ese producto pasa a ser el producto maximo//
+            }
+    
+        printf("Selecciona otro codigo producto: ");    //Que ponga en pantalla Selecciona otro codigo de producto//
+        scanf("%d", &producto);                         //asigno a Producto, leer float//
+        n = n +1;                                       //para que el bucle siga corriendo, le decimos que a n le sumamos 1//
+
+    }
+    media = total/(float)n;                             //al sumar total y dividirlo por n (el cual hemos convertido en decimal) obtenemos el valor medio de los productos//
+    printf("total: ""%f \n", total);                    //que en pantalla ponga total y que total sea leer decimal. También le ponemos un salto de linea, para que sea más legible//
+    printf("Media:  %f\n", media);                      //que en pantalla ponga media y que media sea leer decimal. También le ponemos un salto de linea, para que sea más legible//
+    printf("codigo maximo: ""%d \n", producto_max);     //que en pantalla ponga codigo maximo y que producto_max sea leer decimal. También le ponemos un salto de linea, para que sea más legible//
+    printf("Puntos acumulados: ""%f \n", PUNTOSxEURO * total);  //que en pantalla ponga puntos acumulados y que PUNTOSxEURO multiplicado por total sea leer decimal. También le ponemos un salto de linea, para que sea más legible//
+    return 0;                                               //cerramos función main con retorno de 0//
+}
